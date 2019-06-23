@@ -19,6 +19,14 @@ from selenium import webdriver
 
 plt.rcParams["font.family"] = 'NanumGothic'
 
+def codeClear(bill_codes):
+    for i,ele in enumerate(bill_codes):
+        bill_code = ele.find('a')['href']
+        m = re.search("javascript:fGoDetail\('(.*?)', 'billSimpleSearch'\)", bill_code)
+        bill_code = m.group(1)
+        bill_codes[i] = bill_code
+    return bill_codes 
+
 
 #%% (1) 데이터 수집
 # 모든 법률 코드 리스트
@@ -178,7 +186,6 @@ for i in status2:
         school.append(None)
         
 status2 = pd.DataFrame({'name':name,'hanja':hanja_name,'count':count,'age':age,'birth':birth,'school':school,})
-
 
 
 ## 동명이인 문제 몇개 안되니까 수작업으로 해결!!

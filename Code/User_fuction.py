@@ -1,11 +1,5 @@
 # 사용자함수
-def codeClear(bill_codes):
-    for i,ele in enumerate(bill_codes):
-        bill_code = ele.find('a')['href']
-        m = re.search("javascript:fGoDetail\('(.*?)', 'billSimpleSearch'\)", bill_code)
-        bill_code = m.group(1)
-        bill_codes[i] = bill_code
-    return bill_codes 
+
 
 
 from sklearn.cluster import AgglomerativeClustering
